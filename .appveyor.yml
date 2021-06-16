@@ -55,6 +55,7 @@ init:
   # Set to match Git for Windows default so files with have the line endings we
   # expect on Windows. Why Appveyor changed it, I have no idea.
   - git config --global core.autocrlf true
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
 - cmd: |
@@ -62,27 +63,17 @@ install:
 
 before_build:
 - ps: echo "Calling before build"
-# - ps: & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
-# - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
-# - cmd:    C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe /EP /nologo cputypetest.c
-# - cmd:    "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe /EP /nologo cputypetest.c"
-# - cmd:    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c"
-# - cmd:    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe" /EP /nologo cputypetest.c
 - ps: echo "Runngin ls now"
 - ps: ls
 - ps: '"$env:C_COMPILER_STD"'
 - ps: '$env:C_COMPILER_STD'
 - ps: $env:C_COMPILER_STD
 - ps: "$env:C_COMPILER_STD"
-- ps: $env:C_COMPILER_STD /HELP
-- cmd: '"%C_COMPILER_STD%" /HELP'
-- '"%C_COMPILER_STD%" /EP /nologo cputypetest.c'
+# - ps: $env:C_COMPILER_STD /HELP
+# - cmd: '"%C_COMPILER_STD%" /HELP'
+# - '"%C_COMPILER_STD%" /EP /nologo cputypetest.c'
 # - ps:  'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
 # - ps: cl.exe /EP /nologo cputypetest.c
-# - ps: & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
-# - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
-# - ps: $env:ARCHY_OUTPUT = C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /E /nologo cputypetest.c
-# - ps: $env:ARCHY_OUTPUT = cl.exe /E /nologo cputypetest.c
 
 build_script:
 - ps:    refreshenv
