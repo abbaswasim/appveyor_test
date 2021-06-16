@@ -47,7 +47,8 @@ function(set_target_processor_type out)
 
                 if(EXISTS "${CMAKE_SOURCE_DIR}/cputypetest.c")
                   execute_process(
-                    COMMAND ${C_PREPROCESS} "${CMAKE_SOURCE_DIR}/cputypetest.c"
+                    COMMAND ${C_PREPROCESS} "cputypetest.c"
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
                     OUTPUT_VARIABLE processor
                     ERROR_VARIABLE processor_e
                     RESULT_VARIABLE processor_res
