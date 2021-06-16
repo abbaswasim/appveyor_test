@@ -108,7 +108,7 @@ function(set_target_processor_type out)
             elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "ARM64")
                 set(processor "arm64")
             else()
-                set(C_PREPROCESS ${CMAKE_C_COMPILER} /EP /nologo)
+                set(C_PREPROCESS ${CMAKE_C_COMPILER} /E /nologo)
                 message(STATUS "Found MSVC non-arm will be running ${C_PREPROCESS}")
                 execute_process(
                     COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/cputypetest.c"
@@ -118,7 +118,6 @@ function(set_target_processor_type out)
                     # so as not to trigger PowerShell's stop-on-error in CI.
                     # Unfortunately it suppresses all compile errors too hence
                     # the special case for MSVC.
-                    ERROR_QUIET
                 )
                  message(STATUS "Execute process finished processor = ${processor}")
             endif()
