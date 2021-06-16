@@ -119,6 +119,16 @@ function(set_target_processor_type out)
                     # the special case for MSVC.
                 )
                  message(STATUS "Execute process finished processor = ${processor}")
+                execute_process(
+                    COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/nothing.c"
+                    OUTPUT_VARIABLE processor2
+                    OUTPUT_STRIP_TRAILING_WHITESPACE
+                    # Specify this to block MSVC's output of the source file name
+                    # so as not to trigger PowerShell's stop-on-error in CI.
+                    # Unfortunately it suppresses all compile errors too hence
+                    # the special case for MSVC.
+                )
+                 message(STATUS "Second execute process finished processor = ${processor2}")
             endif()
         else()
             if(APPLE AND NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
