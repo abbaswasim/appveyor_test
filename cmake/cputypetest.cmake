@@ -116,11 +116,6 @@ function(set_target_processor_type out)
                     RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     COMMAND_ECHO STDOUT
-                    ECHO_OUTPUT_VARIABLE
-                    # Specify this to block MSVC's output of the source file name
-                    # so as not to trigger PowerShell's stop-on-error in CI.
-                    # Unfortunately it suppresses all compile errors too hence
-                    # the special case for MSVC.
                 )
                 message(STATUS "Execute process finished processor = ${processor}, and ${processor_res}, ${processor_e}")
                 execute_process(
@@ -130,11 +125,6 @@ function(set_target_processor_type out)
                     RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     COMMAND_ECHO STDOUT
-                    ECHO_OUTPUT_VARIABLE
-                    # Specify this to block MSVC's output of the source file name
-                    # so as not to trigger PowerShell's stop-on-error in CI.
-                    # Unfortunately it suppresses all compile errors too hence
-                    # the special case for MSVC.
                 )
                  message(STATUS "Second execute process finished processor = ${processor2}")
             endif()
