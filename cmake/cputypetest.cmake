@@ -53,15 +53,26 @@ function(set_target_processor_type out)
                     COMMAND_ECHO STDOUT
                 )
                 message(STATUS "Execute process finished processor = ${processor}, and ${processor_res}, ${processor_e}")
+
                 execute_process(
                     COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/cputypetest.c"
-                    OUTPUT_VARIABLE processor
-                    ERROR_VARIABLE processor_e
-                    RESULT_VARIABLE processor_res
+                    OUTPUT_VARIABLE processor2
+                    ERROR_VARIABLE processor_e2
+                    RESULT_VARIABLE processor_res2
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     COMMAND_ECHO STDOUT
                 )
-                 message(STATUS "Second execute process finished processor = ${processor2}")
+                message(STATUS "Second execute process finished processor = ${processor2}, and ${processor_res2}, ${processor_e2}")
+
+                execute_process(
+                    COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/nothing.c"
+                    OUTPUT_VARIABLE processor3
+                    ERROR_VARIABLE processor_e3
+                    RESULT_VARIABLE processor_res3
+                    OUTPUT_STRIP_TRAILING_WHITESPACE
+                    COMMAND_ECHO STDOUT
+                )
+                message(STATUS "Third execute process finished processor = ${processor3}, and ${processor_res3}, ${processor_e3}")
             endif()
         else()
             if(APPLE AND NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
