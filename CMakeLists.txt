@@ -35,6 +35,11 @@ set(WATCHCAT_SOURCE_DIR ${WATCHCAT_ROOT_DIR})
 
 include(${WATCHCAT_ROOT_DIR}/build.cmake)
 include(${WATCHCAT_ROOT_DIR}/cmake/cputypetest.cmake)
+include(${WATCHCAT_ROOT_DIR}/cmake/cputest.cmake)
+
+target_architecture(CPU_ARCHITECTURE_2)
+
+message(STATUS "CPU_ARCHITECTURE2 was set to ${CPU_ARCHITECTURE_2}")
 
 set_target_processor_type(CPU_ARCHITECTURE)
 if(CPU_ARCHITECTURE STREQUAL x86_64)
