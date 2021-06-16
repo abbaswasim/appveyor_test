@@ -63,12 +63,12 @@ before_build:
 - ps: echo "Calling before build"
 # - ps: & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
 # - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
-- ps: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c
-- ps: cl.exe /EP /nologo cputypetest.c
+- ps: $env:ARCHY_OUTPUT = C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c
+- ps: $env:ARCHY_OUTPUT = cl.exe /EP /nologo cputypetest.c
 # - ps: & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
 # - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
-- ps: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /E /nologo cputypetest.c
-- ps: cl.exe /E /nologo cputypetest.c
+- ps: $env:ARCHY_OUTPUT = C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /E /nologo cputypetest.c
+- ps: $env:ARCHY_OUTPUT = cl.exe /E /nologo cputypetest.c
 
 build_script:
 - ps:    refreshenv
