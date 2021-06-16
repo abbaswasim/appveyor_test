@@ -68,15 +68,15 @@ build_script:
 - ps:    pwd
 - ps:    echo "Build via cmake"
 - ps:    echo "cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR"
-# - ps:    cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR
-# - ps:    pushd $env:BUILD_DIR
-# - ps:    echo "In the following folder"
-# - ps:    pwd
-# - ps:    cmake --build . --config $env:CONFIGURATION
-# - ps:    popd
-# - ps:    echo "In the following folder"
-# - ps:    pwd
+- ps:    cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR
+- ps:    pushd $env:BUILD_DIR
+- ps:    echo "In the following folder"
+- ps:    pwd
+- ps:    cmake --build . --config $env:CONFIGURATION
+- ps:    popd
+- ps:    echo "In the following folder"
+- ps:    pwd
 - ps:    echo "Done Building"
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+# on_finish:
+#   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
