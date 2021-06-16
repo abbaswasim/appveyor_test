@@ -44,15 +44,20 @@ function(set_target_processor_type out)
             else()
                 set(C_PREPROCESS "${CMAKE_C_COMPILER} /EP /nologo")
                 message(STATUS "Found MSVC non-arm will be running ${C_PREPROCESS}")
-                execute_process(
+
+                if(EXISTS "${CMAKE_SOURCE_DIR}/cputypetest.c")
+                  execute_process(
                     COMMAND ${C_PREPROCESS} "${CMAKE_SOURCE_DIR}/cputypetest.c"
                     OUTPUT_VARIABLE processor
                     ERROR_VARIABLE processor_e
                     RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     COMMAND_ECHO STDOUT
-                )
-                message(STATUS "Execute process finished processor = ${processor}, and ${processor_res}, ${processor_e}")
+                    )
+                  message(STATUS "Execute process finished processor = ${processor}, and ${processor_res}, ${processor_e}")
+                else()
+                  message(STATUS "The file has suddenly disspeared")
+                endif()
 
                 execute_process(
                     COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/cputypetest.c"
