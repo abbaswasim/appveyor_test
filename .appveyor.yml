@@ -52,10 +52,10 @@ before_build:
 - ps: echo "Calling before build"
 - ps: echo "Runngin ls now"
 - ps: ls
-- ps: '"$env:C_COMPILER_STD"'
-- ps: '$env:C_COMPILER_STD'
-- ps: $env:C_COMPILER_STD
-- ps: "$env:C_COMPILER_STD"
+# - ps: '"$env:C_COMPILER_STD"'
+# - ps: '$env:C_COMPILER_STD'
+# - ps: $env:C_COMPILER_STD
+# - ps: "$env:C_COMPILER_STD"
 # - ps: $env:C_COMPILER_STD /HELP
 # - cmd: '"%C_COMPILER_STD%" /HELP'
 # - '"%C_COMPILER_STD%" /EP /nologo cputypetest.c'
@@ -67,12 +67,16 @@ build_script:
 - ps:    echo "In the following folder"
 - ps:    pwd
 - ps:    echo "Build via cmake"
-- ps:    cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR
-- ps:    pushd $env:BUILD_DIR
-- ps:    echo "In the following folder"
-- ps:    pwd
-- ps:    cmake --build . --config $env:CONFIGURATION
-- ps:    popd
-- ps:    echo "In the following folder"
-- ps:    pwd
+- ps:    echo "cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR"
+# - ps:    cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR
+# - ps:    pushd $env:BUILD_DIR
+# - ps:    echo "In the following folder"
+# - ps:    pwd
+# - ps:    cmake --build . --config $env:CONFIGURATION
+# - ps:    popd
+# - ps:    echo "In the following folder"
+# - ps:    pwd
 - ps:    echo "Done Building"
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
