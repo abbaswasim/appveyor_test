@@ -20,6 +20,7 @@ environment:
   BUILD_DIR: build
   CMAKE_GEN: Visual Studio 15 2017
   GIT_TRACE: 0
+  C_COMPILER_STD: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe
 
 branches:
   except:
@@ -65,9 +66,10 @@ before_build:
 # - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
 # - cmd:    C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe /EP /nologo cputypetest.c
 # - cmd:    "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe /EP /nologo cputypetest.c"
-- cmd:    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c"
+# - cmd:    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c"
 # - cmd:    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe" /EP /nologo cputypetest.c
-# - ps:    & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
+- '%C_COMPILER_STD% /EP /nologo cputypetest.c'
+# - ps:  'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
 # - ps: cl.exe /EP /nologo cputypetest.c
 # - ps: & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
 # - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
