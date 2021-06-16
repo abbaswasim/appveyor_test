@@ -42,7 +42,7 @@ init:
   # Set to match Git for Windows default so files with have the line endings we
   # expect on Windows. Why Appveyor changed it, I have no idea.
   - git config --global core.autocrlf true
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  # - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
 - cmd: |
