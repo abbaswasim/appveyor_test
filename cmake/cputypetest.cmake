@@ -116,7 +116,6 @@ function(set_target_processor_type out)
                     RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     COMMAND_ECHO STDOUT
-                    COMMAND_ERROR_IS_FATAL ANY
                     ECHO_OUTPUT_VARIABLE
                     # Specify this to block MSVC's output of the source file name
                     # so as not to trigger PowerShell's stop-on-error in CI.
@@ -131,7 +130,6 @@ function(set_target_processor_type out)
                     RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
                     COMMAND_ECHO STDOUT
-                    COMMAND_ERROR_IS_FATAL ANY
                     ECHO_OUTPUT_VARIABLE
                     # Specify this to block MSVC's output of the source file name
                     # so as not to trigger PowerShell's stop-on-error in CI.
