@@ -65,8 +65,6 @@ before_build:
 # - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
 - ps: echo C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c
 - ps: echo cl.exe /EP /nologo cputypetest.c
-- ps: echo C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /EP /nologo cputypetest.c
-- ps: echo cl.exe /EP /nologo cputypetest.c
 # - ps: & 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
 # - ps: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /E /nologo cputypetest.c
 # - ps: $env:ARCHY_OUTPUT = C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe /E /nologo cputypetest.c
