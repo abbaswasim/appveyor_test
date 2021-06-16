@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 2.8.12)
 
 configure_file(${CMAKE_SOURCE_DIR}/cputypetest.c ${CMAKE_BINARY_DIR}/cputypetest.c COPYONLY)
-message("Just wrote ${CMAKE_BINARY_DIR}/cputypetest.c")
-message("Just wrote ${CMAKE_BINARY_DIR}/cputypetest.c from ${CMAKE_SOURCE_DIR}/cputypetest.c")
+message(STATUS "Just wrote ${CMAKE_BINARY_DIR}/cputypetest.c")
+message(STATUS "Just wrote ${CMAKE_BINARY_DIR}/cputypetest.c from ${CMAKE_SOURCE_DIR}/cputypetest.c")
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/cputypetest.c")
-  message("It exisits in sourcd")
+  message(STATUS "It exisits in sourcd")
 else()
-  message("It does not exisits in sourcd")
+  message(STATUS "It does not exisits in sourcd")
 endif()
 
 if(EXISTS "${CMAKE_BINARY_DIR}/cputypetest.c")
-  message("It also exisits in sourcd")
+  message(STATUS "It also exisits in sourcd")
 else()
-  message("It also does not exisits in sourcd")
+  message(STATUS "It also does not exisits in sourcd")
 endif()
 
 cmake_policy(SET CMP0054 NEW)
