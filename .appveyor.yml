@@ -74,7 +74,7 @@ before_build:
 - ps: '$env:C_COMPILER_STD'
 - ps: $env:C_COMPILER_STD
 - ps: "$env:C_COMPILER_STD"
-- ps: & $env:C_COMPILER_STD /HELP
+- ps: $env:C_COMPILER_STD /HELP
 - cmd: '"%C_COMPILER_STD%" /HELP'
 - '"%C_COMPILER_STD%" /EP /nologo cputypetest.c'
 # - ps:  'C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe' /EP /nologo cputypetest.c
