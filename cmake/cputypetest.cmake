@@ -112,17 +112,27 @@ function(set_target_processor_type out)
                 execute_process(
                     COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/cputypetest.c"
                     OUTPUT_VARIABLE processor
+                    ERROR_VARIABLE processor_e
+                    RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
+                    COMMAND_ECHO STDOUT
+                    COMMAND_ERROR_IS_FATAL ANY
+                    ECHO_OUTPUT_VARIABLE
                     # Specify this to block MSVC's output of the source file name
                     # so as not to trigger PowerShell's stop-on-error in CI.
                     # Unfortunately it suppresses all compile errors too hence
                     # the special case for MSVC.
                 )
-                 message(STATUS "Execute process finished processor = ${processor}")
+                message(STATUS "Execute process finished processor = ${processor}, and ${processor_res}, ${processor_e}")
                 execute_process(
-                    COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/nothing.c"
-                    OUTPUT_VARIABLE processor2
+                    COMMAND ${C_PREPROCESS} "${CMAKE_BINARY_DIR}/cputypetest.c"
+                    OUTPUT_VARIABLE processor
+                    ERROR_VARIABLE processor_e
+                    RESULT_VARIABLE processor_res
                     OUTPUT_STRIP_TRAILING_WHITESPACE
+                    COMMAND_ECHO STDOUT
+                    COMMAND_ERROR_IS_FATAL ANY
+                    ECHO_OUTPUT_VARIABLE
                     # Specify this to block MSVC's output of the source file name
                     # so as not to trigger PowerShell's stop-on-error in CI.
                     # Unfortunately it suppresses all compile errors too hence
