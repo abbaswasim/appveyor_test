@@ -13,8 +13,8 @@ set(cputypetest_code "
 //
 // For CMake literal compatibility, this file must have no double quotes
 //
-#ifdef _WIN32
-    #ifdef _WIN64
+#if defined (_WIN32)
+    #if defined (_WIN64)
         #undef x86_64
 x86_64
     #else
@@ -27,7 +27,6 @@ x86
         #if TARGET_CPU_X86
             #undef x86
 x86
-
         #elif TARGET_CPU_X86_64
             #undef x86_64
 x86_64
