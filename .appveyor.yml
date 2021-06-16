@@ -1,0 +1,79 @@
+# Copyright 2015-2020 The Khronos Group Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+version: "{build}"
+
+image:
+  - Visual Studio 2015
+  - Visual Studio 2017
+  - Visual Studio 2019
+
+configuration:
+  - Debug
+  - Release
+
+platform:
+  - x64
+#  - Win32
+
+environment:
+  BUILD_DIR: build
+  CMAKE_GEN: Visual Studio 15 2017
+  GIT_TRACE: 0
+
+branches:
+  except:
+    - /subrepo\/*/
+
+# Do not skip tags. Deploy will not be run either.
+skip_tags: false
+
+for:
+  - matrix:
+      only:
+        - image: Visual Studio 2015
+    environment:
+      CMAKE_GEN: Visual Studio 14 2015
+  - matrix:
+      only:
+        - image: Visual Studio 2017
+    environment:
+      CMAKE_GEN: Visual Studio 15 2017
+  - matrix:
+      only:
+        - image: Visual Studio 2019
+    environment:
+      CMAKE_GEN: Visual Studio 16 2019
+
+build:
+  verbosity: detailed
+
+clone_folder: c:\projects\appveyor_test
+
+init:
+  # Set to match Git for Windows default so files with have the line endings we
+  # expect on Windows. Why Appveyor changed it, I have no idea.
+  - git config --global core.autocrlf true
+
+install:
+- cmd: |
+    REM Calling install bit
+
+before_build:
+- ps: |
+    echo "Calling before build"
+
+build_script:
+- ps:    refreshenv
+- ps:    echo "In the following folder"
+- ps:    pwd
+- ps:    echo "Build via cmake"
+- ps:    cmake -G "$env:CMAKE_GEN" -A $env:PLATFORM . -B $env:BUILD_DIR
+- ps:    pushd $env:BUILD_DIR
+- ps:    echo "In the following folder"
+- ps:    pwd
+- ps:    cmake --build . --config $env:CONFIGURATION
+- ps:    popd
+- ps:    echo "In the following folder"
+- ps:    pwd
+- ps:    echo "Done Building"

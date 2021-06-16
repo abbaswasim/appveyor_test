@@ -34,6 +34,16 @@ set(WATCHCAT_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}) # Always prefer the _LIST_ vers
 set(WATCHCAT_SOURCE_DIR ${WATCHCAT_ROOT_DIR})
 
 include(${WATCHCAT_ROOT_DIR}/build.cmake)
+include(${WATCHCAT_ROOT_DIR}/cmake/cputypetest.cmake)
+
+set_target_processor_type(CPU_ARCHITECTURE)
+if(CPU_ARCHITECTURE STREQUAL x86_64)
+    message(STATUS "CPU_ARCHITECTURE was set to ${CPU_ARCHITECTURE}")
+elseif(CPU_ARCHITECTURE STREQUAL x86)
+    message(STATUS "CPU_ARCHITECTURE was set to ${CPU_ARCHITECTURE}")
+else()
+    message(STATUS "CPU_ARCHITECTURE was set to nothing but here it is = ${CPU_ARCHITECTURE}")
+endif()
 
 # Always generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
