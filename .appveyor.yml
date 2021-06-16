@@ -5,12 +5,9 @@ version: "{build}"
 
 image:
   - Visual Studio 2015
-  - Visual Studio 2017
-  - Visual Studio 2019
 
 configuration:
   - Debug
-  - Release
 
 platform:
   - x64
@@ -35,16 +32,6 @@ for:
         - image: Visual Studio 2015
     environment:
       CMAKE_GEN: Visual Studio 14 2015
-  - matrix:
-      only:
-        - image: Visual Studio 2017
-    environment:
-      CMAKE_GEN: Visual Studio 15 2017
-  - matrix:
-      only:
-        - image: Visual Studio 2019
-    environment:
-      CMAKE_GEN: Visual Studio 16 2019
 
 build:
   verbosity: detailed
